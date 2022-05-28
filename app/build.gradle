@@ -59,4 +59,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.2.0-beta02"
     debugImplementation "androidx.compose.ui:ui-tooling:1.2.0-beta02"
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.2.0-beta02"
+
+    //to fetch image form a url
+    implementation "com.github.skydoves:landscapist-glide:1.5.2"
 }
