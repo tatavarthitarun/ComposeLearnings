@@ -1,4 +1,4 @@
-package com.tatav.savedstateexample
+package com.tatav.composelearnings
 
 import org.junit.Test
 

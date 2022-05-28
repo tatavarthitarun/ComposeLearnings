@@ -1,4 +1,4 @@
-package com.tatav.savedstateexample.ui.theme
+package com.tatav.composelearnings.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
