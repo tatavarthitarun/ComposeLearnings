@@ -5,12 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tatav.composelearnings.ui.theme.ComposeLearnings
 
@@ -21,14 +21,28 @@ class MainActivity : ComponentActivity() {
         //call composable function only in setContent
         setContent {
             ComposeLearnings {
-                MyApp()
+              MyApp()
             }
         }
     }
 
     @Composable
-    fun MyApp(names: List<String> = listOf("World", "Compose")) {
-        Column(Modifier.padding(vertical = 4.dp)) {
+    fun MyApp() {
+
+        //Hoisting a state to be able to used by one or more composable functions
+        var shouldShowOnboarding by remember { mutableStateOf(true) }
+
+        if (shouldShowOnboarding) {
+            //sending the state value up from the composable function
+            OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
+        } else {
+            Greetings()
+        }
+    }
+
+    @Composable
+    private fun Greetings(names: List<String> = listOf("World", "Compose")) {
+        Column(modifier = Modifier.padding(vertical = 4.dp)) {
             for (name in names) {
                 Greeting(name = name)
             }
@@ -67,4 +81,36 @@ class MainActivity : ComponentActivity() {
 
         }
     }
+
+    //State Hoisting
+
+    @Composable
+    fun OnboardingScreen(onContinueClicked: () -> Unit) {
+
+        Surface {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("Welcome to the Basics Codelab!")
+                Button(
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.padding(vertical = 24.dp),
+                    onClick =  onContinueClicked
+                ) {
+                    Text("Continue")
+                }
+            }
+        }
+    }
+
+    @Preview(showBackground = true, widthDp = 320, heightDp = 320)
+    @Composable
+    fun OnboardingPreview() {
+        ComposeLearnings {
+            MyApp()
+        }
+    }
+
 }
