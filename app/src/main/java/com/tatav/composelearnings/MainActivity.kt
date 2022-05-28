@@ -13,24 +13,25 @@ class MainActivity : ComponentActivity() {
         //call composable function only in setContent
         setContent {
             //calling composable function
-            MessageCard(Message("Tarun","Dad i hate you"))
+            MessageCard(Message("Brian Tracy","Eat That Frog! Action Workbook: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time"))
 
         }
     }
 }
 
 //sample data class
-data class Message(val Author: String,val body:String)
+data class Message(val Author: String,val book:String)
 
 //composable function
 @Composable
 fun MessageCard(message: Message) {
     Text(text = message.Author)
-    Text(text = message.body)
+    Text(text = message.book)
 }
-//calling composable function for preview
+
+//calling composable function for preview in only android studio
 @Preview
 @Composable
 fun PreviewMessageCard() {
-    MessageCard(Message("TataV","GrandMa,Next Door"))
+    MessageCard(Message("Robin Sharma","The Monk Who Sold His Ferrari"))
 }
