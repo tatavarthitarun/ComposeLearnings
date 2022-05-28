@@ -60,6 +60,9 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:1.2.0-beta02"
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.2.0-beta02"
 
+    //Icon pack for compose
+    implementation "androidx.compose.material:material-icons-extended:1.2.0-beta02"
+
     //to fetch image form a url
     implementation "com.github.skydoves:landscapist-glide:1.5.2"
 }
