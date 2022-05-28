@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import com.tatav.composelearnings.ui.theme.ComposeLearnings
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +64,7 @@ class MainActivity : ComponentActivity() {
                     Text(if (expanded.value) "Show less" else "Show more")
                 }
             }
+
         }
     }
 }
